@@ -1,0 +1,41 @@
+ALGORITHM palindrome3
+// An algorithm for checking if a word is a palindrome using a recursive function.
+
+VAR
+    s : STRING;
+
+BEGIN
+    // Read the input word from the user.
+    word := Read("Enter your word: ")
+    
+    // Recursive function to check if a substring of a word is a palindrome.
+    FUNCTION is_palindrome(s : STRING[10], start, end : INTEGER) : BOOLEAN
+    BEGIN
+        IF (start >= end) THEN
+            // Base case: When start index is greater than or equal to end index,
+            // it means we have checked all characters and they match.
+            RETURN TRUE;
+        ELSE_IF (s[start] = s[end]) THEN
+            // If the characters at the current start and end positions match,
+            // recursively check the next pair of characters.
+            RETURN is_palindrome(s, start + 1, end - 1);
+        ELSE
+            // If the characters don't match, it's not a palindrome.
+            RETURN FALSE;
+        END_IF
+    END
+    
+    // Check if the input word is a palindrome using the is_palindrome function.
+    IF (nb_char != 0 AND nb_char != 1) THEN
+        IF (is_palindrome(word, 0, LENGTH(word) - 1)) THEN
+            // If the is_palindrome function returns true, it's a palindrome.
+            Write("This is a palindrome.")
+        ELSE
+            // If the is_palindrome function returns false, it's not a palindrome.
+            Write("This is not a palindrome.")
+        END_IF
+    ELSE
+        // Handle cases where the input has one character or is empty.
+        Write("The input has one character or is empty and cannot be a palindrome.")
+    END_IF
+END

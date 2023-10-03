@@ -1,0 +1,27 @@
+ALGORITHM Palindrome2
+// An algorithm for checking if a word is a palindrome or not.
+
+VAR
+    word : STRING;
+    nb_char : INTEGER;
+
+BEGIN
+    // Calculate the length of the input word.
+    nb_char := LENGTH(word)
+    
+    // Function to check if a string is a palindrome.
+    FUNCTION is_palindrome(str) : STRING;
+        BEGIN 
+            // Check if the string is equal to its reverse.
+            RETURN str == str[::-1];
+        END
+
+    IF (nb_char != 0 AND nb_char != 1) THEN
+        // Check if the input word is a palindrome using the is_palindrome function.
+        IF (is_palindrome(word)) THEN
+            Write("The input is a palindrome")
+        ELSE
+            Write("The input is not a palindrome")
+        END_IF
+    ELSE
+        // Handle cases where the input has one character or is empty.
